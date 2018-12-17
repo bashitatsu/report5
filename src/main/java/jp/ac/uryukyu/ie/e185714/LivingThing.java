@@ -1,12 +1,21 @@
 package jp.ac.uryukyu.ie.e185714;
 
+/**
+ * Hero.javaとEnemy.javaの共通部分をまとめたクラス。
+ */
+
 public class LivingThing {
     private String name;
     private int hitPoint;
     private int attack;
     private boolean dead;
 
-
+    /**
+     * コンストラクタ。
+     * @param name キャラクターの名前
+     * @param maximumHP 最大体力
+     * @param attack 攻撃力
+     */
     public LivingThing (String name, int maximumHP, int attack) {
         this.name = name;
         this.hitPoint = maximumHP;
@@ -16,46 +25,73 @@ public class LivingThing {
     }
 
     /**
-     * getterメソッドと同等。生死をboolean表現しているためメソッド名をisDead()とした。
-     * @return boolean
+     * nameのgetterメソッド。
+     * @return name キャラクターの名前
      */
-
-    //name
     public String getName(){
         return name;
     }
 
+    /**
+     * nameのsetterメソッド。
+     * @param name キャラクターの名前
+     */
     public void setName(String name){
         this.name = name;
     }
 
-    //hitPoint
+    /**
+     * hitPointのgetterメソッド。
+     * @return hitPoint その時点の体力
+     */
     public int getHitPoint(){
         return hitPoint;
     }
 
+    /**
+     * hitPointのsetterメソッド。
+     * @param hitPoint 体力
+     */
     public void setHitPoint(int hitPoint){
         this.hitPoint = hitPoint;
     }
 
-    //attack
+    /**
+     * attackのgetterメソッド。
+     * @return attack 攻撃力
+     */
     public int getAttack(){
         return attack;
     }
 
+    /**
+     * attackのsetterメソッド。
+     * @param attack 攻撃力
+     */
     public void setAttack(int attack){
         this.attack = attack;
     }
 
-    //dead
+    /**
+     * deadのgetterメソッド。
+     * @return dead trueまたはfalse
+     */
     public boolean isDead() {
         return dead;
     }
 
+    /**
+     * deadのsetterメソッド。
+     * @param dead trueまたはfalse
+     */
     public void setDead(boolean dead){
         this.dead = dead;
     }
 
+    /**
+     * 勇者またはモンスターが相手に攻撃するメソッド。
+     * @param opponent 敵キャラクター
+     */
     public void attack(LivingThing opponent){
         if (!isDead()) {
             int damage = (int) (Math.random() * attack);
@@ -64,6 +100,10 @@ public class LivingThing {
         }
     }
 
+    /**
+     * キャラクターが攻撃を受けるメソッド。
+     * @param damage ダメージ量
+     */
     public void wounded(int damage){
         hitPoint -= damage;
         if( hitPoint < 0 ) {
